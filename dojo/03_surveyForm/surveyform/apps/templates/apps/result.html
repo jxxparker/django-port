@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div id="container">
+      <h1>Submitted Info</h1>
+
+      <p>Name: {{ name_template }}</p>
+      <p>Dojo Location: {{ location_template }}</p>
+      <p>Favorite Language: {{ language_template }}</p>
+      <p>Comment: {{ comments }}</p>
+      
+      <button type="submit">Go Back</button>
+    </div>
+  </body>
+</html>
