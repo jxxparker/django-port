@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <title>Ninja Gold</title>
+    {% load static %}
+</head>
+<body>
+
+    <div class="container">
+        <h3>Welcome to Gambler's Bet</h3>
+        <p>This is a friendly game taht allows you to bet the amount of money you have. Gambling in real life can be scary and be dangerous so feel free to play it here safely without no cost and risk. Enjoy!</p>
+        <hr>
+        <!-- --------------- -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Gold: $ {{request.session.money}}</h3>
+                <form action="/clear" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-default">Reset</button>
+                </form>
+            </div>
+        </div>
+        <hr>  
+        <!-- --------------- -->
+        <!-- --------------- -->
+        <div class="row">
+            <!-- --------------- -->
+            <div class="col-md-3 border">
+                <h3>Light Bet</h3>
+                <form action="/process" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="hidden" value="lightBet">
+                    <button type="submit" class="btn btn-default">Bet</button>
+                </form>
+            </div>
+
+            <div class="col-md-3 border">
+                <h3>Medium Bet</h3>
+                <form action="/process" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="hidden" value="mediumBet">
+                    <button type="submit" class="btn btn-default">Bet</button>
+                </form>
+            </div>
+
+            <div class="col-md-3 border">
+                <h3>High Bet</h3>
+                <form action="/process" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="hidden" value="highBet">
+                    <button type="submit" class="btn btn-default">Bet</button>
+                </form>
+            </div>
+
+            <div class="col-md-3 border">
+                <h3>SUPER HIGH</h3>
+                <form action="/process" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="hidden" value="superhighBet">
+                    <button type="submit" class="btn btn-default">Bet</button>
+                </form>
+            </div>
+            <!-- --------------- -->
+        </div>
+        <hr>  
+        <!-- --------------- -->
+            <div class="col-md-12">
+                <p>Activities</p>
+                <div class="scroll">
+                    {% for message in request.session.action %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- --------------- -->
+     </div>
+   
+
+</body>
+</html>

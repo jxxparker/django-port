@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+    <title>Jihuns Portfolio Main</title>
+    <link href="{% static 'css/main.css'  %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="card card-body h-100  border-info" id="profile-wrapper">
+                    <p style="font-weight: bold; text-align:center">Add New Message</p>
+                    <hr>    
+
+                    <form id="words" name="entry" action="/addWord" method="post">
+                        {% csrf_token %}
+                        <input id="textbox" type="text" name="word">
+                        <h2>Choose color</h2>
+                        <input type="hidden" name="color" value="null" checked>
+                        <div class="buttons"><input type="radio" name="color" value="red">  Red</div>
+                        <div class="buttons"><input type="radio" name="color" value="blue">  Green</div>
+                        <div class="buttons"><input type="radio" name="color" value="green">  Blue</div>
+                        <hr>
+                        <div id="gap"><input type="checkbox" name="bigfont" value="big">Show in BIG fonts!</div>
+                        <hr>
+                        <input class="button" type="submit" action="/addWord" method="post" value="Add to Session">
+                    </form>
+                    
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="card card-body h-100  border-info">
+                    <ul class="social-links">
+                        <div>
+                            {% if messages %}
+                            {% for message in messages %}
+                                <p id="error">{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+
+                        <div id="output">
+                            <div id="solo"><a href="/clear"><button class="button date">Clear Session</button></a></div>
+                            {% for word in request.session.words %}
+                                <p><span class='{{word.color}} {{word.font}}'>{{word.word}}</span><span class='date'> - added on {{word.time}}</span></p>
+                            {% endfor %}
+                        </div>
+                    </ul>
+                </div>
+            </div>
+                
+        </div>
+    </div>
+    
+    
+</body>
+</html>
+<p style="text-align:center; font-size:10px">Copyright © 2022 Jihun Park</p>
