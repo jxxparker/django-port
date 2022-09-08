@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    {% extends 'main.html' %}
+    {% block content %}
+    
+
+    {% if page == "register" %}
+        <h1>Register user</h1>
+        <form method="POST" action="{% url 'registerUser' %}">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="Submit" value="Registe User"/ >
+        </form>
+
+    <p>Already have an account? <a href="{% url 'loginUser' %}">Log In</a></p>
+    {% else%}
+    <form action="{% url 'loginUser' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username "/>
+        <input type="password" name="password" placeholder="Enter Password"/>
+        <input type="submit" name="Login" />
+
+        <p>Don't have an account? <a href="{% url 'registerUser' %}">Sign Up</a></p>
+    </form>
+    {% endif %}
+
+    {% endblock %}
+</body>
+</html>

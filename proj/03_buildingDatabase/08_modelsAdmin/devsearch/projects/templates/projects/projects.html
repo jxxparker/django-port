@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Projects Page</title>
+  </head>
+  <body>
+    {% extends 'main.html' %} {% block content %}
+    <hr />
+    <h1>Projects Page</h1>
+
+    <ul>
+      {% for project in projects %} 
+        <li>Name: <a href="{% url 'single_project' project.id %}">{{project.title}}</a>- - - {{project.description}}</li>
+      {% endfor %}
+    </ul>
+
+    {% endblock %}
+  </body>
+</html>

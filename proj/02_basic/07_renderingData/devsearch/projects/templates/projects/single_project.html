@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Single Project page</title>
+  </head>
+  <body>
+    {% extends 'main.html' %} {% block content %}
+    <h1>{{project.title}}</h1>
+    <br>
+    <p>{{project.description}}</p>
+
+    {% endblock %}
+  </body>
+</html>

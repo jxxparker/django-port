@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Delete</title>
+</head>
+<body>
+    {% extends "main.html" %}
+
+    {% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{project_name}}" ?</p>
+        <button><a href="{% url 'index' %}">Go Back</a></button>
+        <input type="Submit" value="Confirm">
+    </form>
+    {% endblock %}
+</body>
+</html>
+
+

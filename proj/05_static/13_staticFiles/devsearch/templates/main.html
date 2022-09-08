@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    {% block content %}
+
+    <p>testing</p>
+    
+    {% endblock%}
+</body>
+</html>

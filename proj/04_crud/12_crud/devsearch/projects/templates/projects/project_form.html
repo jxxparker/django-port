@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Project Form Page</title>
+</head>
+<body>
+    {% extends 'main.html' %} {% block content %}
+    
+    <h1>Project Form Page</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit">
+    </form>
+
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>NavBar</title>
+  </head>
+  <body>
+    <img src="{% static 'images/logo.svg' %}">
+    <a href="{% url 'createProject' %}">Add Project</a>
+    <hr>
+  </body>
+</html>
